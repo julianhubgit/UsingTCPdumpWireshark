@@ -28,6 +28,8 @@ This will be a demonstration of how to capture network traffic inside of termina
 <img src="https://i.imgur.com/cqn5cai.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
 
 
+ctrl+c stops traffic capture in terminal.
+
 <h2 align="center">Using filters within tcpdump to received network traffic:</h2>
 
 Once you have the interface list, you can investigate specified interfaces by adding -i + the network interface you wish to look into.
@@ -49,31 +51,52 @@ You can further filter the network traffic captured by specifying the destinatio
 
 For example: 'sudo tcpdump -i en0 -v dst 192.168.1.255'
 
-In this command the specifed
+In this command the specifed destination IP is shown by 'dst' and is '192.168.1.255'. 
 
-<img src="https://i.imgur.com/kShlx4m.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
+<img src="https://i.imgur.com/aBhUjnQ.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
 
-In the chmod command u sets the permissions for the user who owns the file, g sets the permissions for the group that owns the file, and o sets the permissions for others.
+Source and destination IP addresses can be combined to show network traffic from one source IP to another destination IP.
 
-The following command will modify the other user permissions to remove the permission to write files: chmod o-w project_k.txt.
+Shown below by the use of "and':
 
-This is the outcome of the permissions successfully modified: 
-
-<img src="https://i.imgur.com/k3uxC4M.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
+<img src="https://i.imgur.com/YI0174v.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
 
 
-<h2 align="center">Change file permissions on a hidden file:</h2>
+<h2 align="center">Capturing network traffic within a specified range:</h2>
 
-The research team has archived .project_x.txt, which is why it’s a hidden file. This file should not have write permissions for anyone, but the user and group should be able to read the file. I know .project_x.txt is a hidden file because it starts with a full stop (.).
+Network traffic can also be captured from a specified range. This can be done by the use of 'net' shown below:
 
+'sudo tcpdump -i en0 -v net 192.168.1.0/24'. 
 
-<img src="https://i.imgur.com/QGaV7AQ.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
+This will capture all data from the network range specified - in this case 192.168.1.0-24
 
-Currently the user and group can both write to the hidden file and the user is the only user type who can read the file.
+<img src="https://i.imgur.com/va9KElM.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
 
-The following command ensures to remove the write permissions for both the user and group and add the read permissions for the group:
+Network traffic can also be captured from specified protocols i.e: tcp or udp and also ports i.e: 443 or 80 etc.
 
-<img src="https://i.imgur.com/6lagvDp.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
+Example: 'sudo tcpdump -i en0 -v tcp and net 192.168.1.0/24'
+
+This is an exampled of a protocol specific filter. This will capture all tcp data from the network range specified - in this case 192.168.1.0-24.
+
+'sudo tcpdump -i en0 -v port 80'
+
+This will capture any data coming and going from port 80
+
+<img src="https://i.imgur.com/e6vm9zy.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
+
+'sudo tcpdump -i en0 -v src port 443 and dst 192.168.1.146'
+
+This is a combination of the two. The source port is 443 and destination is ip 192.168.1.146. Data will be captured using these specified filters.
+
+<h2 align="center">Saving network traffic from tcpdump into a pcap file for Wireshark:</h2>
+
+'sudo tcpdump -w /Users/who_else/Desktop/traffic.pcap -i en0 -v tcp and net 192.168.1.0/24’
+
+The -w specifies you wish to write a file. This then needs to be followed by the path and file name you wish to write the pcap file to. This command is capturing all tcp traffic on the network range of 192.168.1.0-24.
+
+The pcap file can be opened within Wireshark and analysed further as shown below:
+
+<img src="" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
 
 This is the successful outcome:
 
