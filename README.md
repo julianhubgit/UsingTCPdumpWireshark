@@ -96,34 +96,9 @@ The -w specifies you wish to write a file. This then needs to be followed by the
 
 The pcap file can be opened within Wireshark and analysed further as shown below:
 
-<img src="" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
+<img src="https://i.imgur.com/1U2juou.png" height="80%" width="80%" alt="Analyzing Network Traffic with tcpdump and Wireshark"/>
 
-This is the successful outcome:
-
-<img src="https://i.imgur.com/M2ZcWJ5.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
-
-
-<h2 align="center">Change directory permissions:</h2>
-
-The files and directories in the projects directory belong to the researcher2 user. Only researcher2 should be allowed to access the drafts directory and its contents. Use a Linux command to modify the permissions accordingly.
-
-Currently group users have permissions to execute files in the drafts directory.
-
-<img src="https://i.imgur.com/hGOWugA.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
-
-To remove the group permissions to remove the executable permissions for the group user this command is used:
-
-<img src="https://i.imgur.com/Hgaw7OI.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
-
-This is the outcome:
-
-<img src="https://i.imgur.com/UINsdDD.png" height="80%" width="80%" alt="Editing Linux Permissions steps"/>
-
-
-<h2 align="center">Summary:</h2>
-
-
-Linux commands were used to modify, remove & add permissions for the three user types: user, group and other as per the organizations requirements. Removing unauthorized access and adding authorized access ensures that the system can stay secure.
+Here we can clearly see with the help of the Wireshark GUI the length, time, source, destination etc. All useful information when analyzing packet data that we can discover a lot from.
 
 
 <!--
