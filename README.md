@@ -17,6 +17,7 @@ This will be a demonstration of how to capture network traffic inside of termina
 
 
 
+
 <h2 align="center">Understanding terminal and basic tcpdump functions: </h2>
   
 'tcpdump —help' specifies all the functionalities of tcpdump within the terminal with explanations of what they all do.
